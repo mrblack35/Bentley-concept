@@ -30,6 +30,7 @@ function closeMenu() {
     }
 }
 
+//Mobile menu button to open/close sub items
 const collapseBtn = document.querySelectorAll(".nb-collapsible-btn");
 
 for(let i = 0; i < collapseBtn.length; i++) {
@@ -51,25 +52,91 @@ for(let i = 0; i < collapseBtn.length; i++) {
 
 //Technology
 
+//Add event listener to circular buttons. Add/remove active class to expand associated section
 const spots = document.querySelectorAll(".ct-spot");
-const spotFill = document.querySelectorAll(".ct-spot-fill");
-const spotStroke = document.querySelectorAll(".ct-spot-stroke");
-const section = document.querySelectorAll(".ct-section");
+const sections = document.querySelectorAll(".ct-section");
 
 spots.forEach((spot, spotIndx) => {
 
-    spot.addEventListener("click", function () {
+    spot.addEventListener("click", function (e) {
 
-        section.forEach((sect, secIndx) => {
+        console.log(e);
+        spotColourChange(e);
 
-            if (spotIndx !== secIndx) {
-                section[secIndx].classList.remove("active");
+        sections.forEach((section, sectIndx) => {
+
+            if (spotIndx !== sectIndx) {
+                sections[sectIndx].classList.remove("active");
             } else {
-                section[secIndx].classList.toggle("active");
+                sections[sectIndx].classList.toggle("active");
             }
         })
     });
 })
+
+//section close button
+const closeBtn = document.querySelectorAll('.ct-close-btn');
+
+closeBtn.forEach((btn) => {
+    btn.addEventListener('click', function(e) {
+        sections.forEach((sect) => {
+            sect.classList.remove("active");
+        })
+        spotColourChange(e);
+        console.log(e);
+    })
+})
+
+//function to change the colour of circular buttons to show whether it's active or not
+function spotColourChange (e) {
+    let targetParent = e.target.parentElement;
+    console.log(targetParent);
+    for (let i = 0; i < spots.length; i++) {
+        let spotParent = spots[i];
+        let spotChildren = spots[i].children;
+        for (let j = 0; j < spotChildren.length; j++) {
+            
+            let fillColour = spotChildren[j].getAttribute("fill"); 
+            let strokeColour = spotChildren[j].getAttribute("stroke");
+ 
+            if (spotParent !== targetParent && fillColour === "red") {
+                spotChildren[j].setAttribute("fill", "white");
+            } else if (spotParent == targetParent && fillColour === "white") {
+                spotChildren[j].setAttribute("fill", "red");
+            } else if (spotParent == targetParent && fillColour === "red") {
+                spotChildren[j].setAttribute("fill", "white");
+            }
+            
+            if (spotParent !== targetParent && strokeColour === "red") {
+                spotChildren[j].setAttribute("stroke", "white");
+            } else if (spotParent == targetParent && strokeColour === "white") {
+                spotChildren[j].setAttribute("stroke", "red");
+            } else if (spotParent == targetParent && strokeColour === "red") {
+                spotChildren[j].setAttribute("stroke", "white");
+            }
+
+            /* spotParent !== targetParent ? resetSiblings() : changeTarget()
+
+            function resetSiblings() {
+                fillColour === "red"
+                    ? spotChildren[j].setAttribute("fill", "white")
+                    : spotChildren[j].setAttribute("fill", "red")
+                strokeColour === "red"
+                    ? spotChildren[j].setAttribute("stroke", "white")
+                    : spotChildren[j].setAttribute("stroke", "red")
+            }
+
+            function changeTarget() {
+                fillColour === "white"
+                    ? spotChildren[j].setAttribute("fill", "red")
+                    : spotChildren[j].setAttribute("fill", "white")
+                strokeColour === "white"
+                    ? spotChildren[j].setAttribute("stroke", "red")
+                    : spotChildren[j].setAttribute("stroke", "white")
+            } */
+        }
+    }
+}
 
 //Gallery
 
