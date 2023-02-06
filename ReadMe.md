@@ -4,21 +4,6 @@
 
 
 ## General Information
-- Provide general information about your project here
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-
-- What was your motivation?
-- Why did you build this project?
-- What problem does it solve?
-- What did you learn?
-- What makes your project stand out?
-- If your project has a lot of features, consider adding a "Features" section and listing them here.
-- What your application does
-- Why you used the technologies you used
-- Some of the challenges you faced and features you hope to implement in the future
-
 The project was born out of a desire to improve on the underwhelming experience of navigating the official Bentley Continental GT3 web pages. 
 It was clear from the outset that the new website would need to elevate the GT3 race car, increase awareness beyond their existing audiances, educate and inspire new customers in order to drive sales of their race car and support packages.
 
@@ -37,10 +22,6 @@ It was clear from the outset that the new website would need to elevate the GT3 
 
 
 ## Room for Improvement
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
 
 To do:
 - Add animated smoke effect to hero page
